@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+# Helpful links: 
+
+# Learning Ruby in 20 mintutes: http://www.ruby-lang.org/en/documentation/quickstart/
+
+# Try Ruby: http://tryruby.org/ 
+
 # 1. Hello World
 
 puts 'Hello World!'
