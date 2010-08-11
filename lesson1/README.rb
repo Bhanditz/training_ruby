@@ -32,6 +32,8 @@ x = "#{x} and two" # will be equal one and two
 
 x = '#{x} and two' # will be equal '#{x} and two' 
 
+x = :one # this is a special kind of string, called symbol, it differs from normal string because for every letter combination there is only one representation of it in the memory of the program.
+
 x = [1, 2, 3, 4] # x is an array (list) which contains 4 numbers
 
 x[0] # => 1

@@ -15,5 +15,3 @@ Procedural approach gave birth to very complex and stable systems, Linux kernel,
 =Home work
 
 We did improve our code, and now it is a good time to enhance the model of the store. Currently our model allows to buy more snacks than  the store actually have. It is also possible to spend more money than a customer of the store actually has. Modify the code in such a way that makes it impossible to buy depleted snacks, also issue a warning to remind customer to note how much money they own to the store if they overspend. Also look for the lines of code that can be further abstracted into functions.
-
-
