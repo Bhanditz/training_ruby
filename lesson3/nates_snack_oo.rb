@@ -1,4 +1,40 @@
 #!/usr/bin/env ruby
+class Customer
+
+  def initialize(dollars, snacks, name)
+    @dollars = dollars
+    @snacks = snacks
+    @name = name
+  end
+
+  def name
+    @name
+  end
+  
+  def dollars
+    @dollars
+  end
+
+  def snacks
+    @snacks
+  end
+
+  def buy(store, snack, quantity)
+    store.snacks.get(snack, quantity, self)
+  end
+
+end
+
+dima = Customer.new(2, [], "Dima")
+patrick = Customer.new(1, [], "Patrick")
+
+p dima.name
+dima.name = ('Dmitry')
+p dima.name
+p patrick.dollars
+
+
+__END__
 store = {:treasure_chest => 0,
   :snack_cost => 0.75,
   :nate_profit => 0}
