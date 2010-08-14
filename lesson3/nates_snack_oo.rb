@@ -1,37 +1,40 @@
 #!/usr/bin/env ruby
 class Customer
+  attr dollars, snacks, name 
 
   def initialize(dollars, snacks, name)
-    @dollars = dollars
-    @snacks = snacks
-    @name = name
+    @dollars, @name = dollars, name
+    @snacks = []
   end
 
-  def name
-    @name
-  end
-  
-  def dollars
-    @dollars
-  end
-
-  def snacks
-    @snacks
-  end
-
-  def buy(store, snack, quantity)
+  def buy(store, snack, quantitV
     store.snacks.get(snack, quantity, self)
   end
-
 end
 
-dima = Customer.new(2, [], "Dima")
-patrick = Customer.new(1, [], "Patrick")
+class Food
+  attr name, quantity, cost
 
-p dima.name
-dima.name = ('Dmitry')
-p dima.name
-p patrick.dollars
+  def initialize(name, quantity, cost)
+    @name, @quantity, @cost = name, quantity, cost 
+  end  
+end
+
+class Store
+  attr treasure_chest, snack_cost, profit
+
+  def initialize
+    @treasure_chest, @profit = 0
+    @snack_cost = 0.75
+  end
+end
+
+dima = Customer.new(2, "Dima")
+patrick = Customer.new(1, "Patrick")
+kristen = Customer.new(4, "Kristen")
+
+customers = [dima, patrick, kristen]
+
 
 
 __END__
