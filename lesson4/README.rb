@@ -132,4 +132,13 @@ my_func {|str| str + ' world'}
 
 require 'blocks'
 
+# = Dynamic nature of ruby
+# There is nothing sacred in Ruby...
+# Monkey patching is a common practice (somewhat dangerous)
+obj = 'hello'
 
+def obj.continue
+  self.to_s + ' world'
+end
+
+puts obj.continue
