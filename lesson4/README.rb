@@ -1,4 +1,5 @@
 # vim: set spell:
+
 # = Objects and Methods - Ruby as language designed around OO paradigm
 # 
 #    1. Object Oriented approach to programming 
@@ -34,18 +35,19 @@
 #                                        +-----------+----------+
 #                                                    |
 #                                                    | 
-#            +---------------------------+-----------+------------+------------------------+
-#            |                           |                        |                        |
-#            |                           |                        |                        |
-#   +-Medical Student------+  +-Biology Student------+  +--Math Student--------+ +-Janitor--------------+
-#   |                      |  |                      |  |                      | |                      |
-#   | def next_lecture()   |  | def next_lecture()   |  | def next_lecture()   | |                      |
-#   |   next_medical_class |  |   next_biology_class |  |   next_math_class    | |                      |
-#   | end                  |  | end                  |  | end                  | |                      |
-#   |                      |  |                      |  |                      | |                      |
-#   +----------------------+  +----------------------+  +----------------------+ +----------------------+
+#            +---------------------------+-----------+------------+----------------------+
+#            |                           |                        |                      |
+#            |                           |                        |                      |
+#   +-Medical Student------+  +-Biology Student------+  +--Math Student------+ +-Janitor------+
+#   |                      |  |                      |  |                    | |              |
+#   | def next_lecture()   |  | def next_lecture()   |  | def next_lecture() | |              |
+#   |   next_medical_class |  |   next_biology_class |  |   next_math_class  | |              |
+#   | end                  |  | end                  |  | end                | |              |
+#   |                      |  |                      |  |                    | |              |
+#   +----------------------+  +----------------------+  +--------------------+ +--------------+
 #  
-#   == Objects, dots, and methods are the most ubiquitous elements of any ruby program
+#   == Everything is an object in Ruby
+#     Objects, dots, and methods are the most ubiquitous elements of any ruby program
 #     even most operators (for example -, +, *) are actually methods of their objects
 #
 #   C language data types are not objects
@@ -58,20 +60,76 @@
 #   Ruby is different -- all data types in ruby are objects and it is super cool! It is cool because everything
 #   in ruby behaves predictably. Ruby objects interact with each other by sending messages. Messages are methods
 #   exposed for external use.
+
+
+"Hi".downcase # Most of ruby expressions work with objects and their methods.
+
 #  
 #   == Introspection
 #
-#   one great advantage of such design is that it is easy to see what methods are available for every object.
+#   one great advantage of such design -- you can inspect everything the same way
 #   
+1.public_methods.sort
+1.public_methods(false).sort # not inherited methods only
+1.class # => Fixnum
+1.class.superclass # => Integer
+'eol'.is_a? String
+'eol'.respond_to? :slice
+local_variables
+
+
+#   more about introspection:
+require 'introspection'
+
+
+#   == Object, dot, method
 
 'boston'.capitalize
 1.+(2)
 'Cape'.+(' Cod')
 '#'.*(72)
 
-#it is not convenient to write 1.+(2) so there is a syntactic sugar added to operator constracts
+#it is not convenient to write 1.+(2) so there is a syntactic sugar added to operator constructs
 1 + 2
 'Cape' + 'Cod'
 '#' * 72
+
+# = Everything is expression
+#
+# Statements return no value, expressions do. Everything in ruby is expression and returns value.
+
+if 1 == 1 then x = 4 end # => 4
+
+2 # => 2
+
+# Interesting consequence of that -- it is possible to chain expressions together letting them feed on each other similar to unix pipes
+
+['encyclopedia', 'Life'].join(' of ').capitalize.reverse[0..3].upcase
+
+if Time.now.hour.between?(12, 13)
+  'Lunch'
+else
+  'Something else'
+end + ' time'
+
+# Simple expressions return themselves, for example expression 4 returns 4
+# Everything can be chain to everything, but if a method is missing chain would break
+
+# = Blocks
+# Blocks change how you work with loops the most.
+# Blocks make your functions very flexible.
+# Flow control goes to blocks by using 'yield'
+def my_func
+  x = yield "Hi "
+  puts x + '!'
+  'method returns this string'
+end
+
+my_func {|str| str + ' world'}
+
+# blocks are pieces of code separated wither by { and } or by 'do' and 'end'
+# both syntax structures are almost identical, by convention {,} are used for one-liners, 'do', 'end' for multi-line blocks.
+
+require 'blocks'
 
 
