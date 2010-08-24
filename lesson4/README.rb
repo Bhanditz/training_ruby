@@ -96,11 +96,13 @@ require 'introspection'
 
 # = Everything is expression
 #
-# Statements return no value, expressions do. Everything in ruby is expression and returns value.
+# Statements return no value, expressions do. Everything in ruby is expression and returns a value.
 
 if 1 == 1 then x = 4 end # => 4
 
 2 # => 2
+
+x = 5 # => 5
 
 # Interesting consequence of that -- it is possible to chain expressions together letting them feed on each other similar to unix pipes
 
@@ -129,6 +131,30 @@ my_func {|str| str + ' world'}
 
 # blocks are pieces of code separated wither by { and } or by 'do' and 'end'
 # both syntax structures are almost identical, by convention {,} are used for one-liners, 'do', 'end' for multi-line blocks.
+
+#loops can be done in a traditional way
+for a in [1,2,3]
+  puts a
+end
+
+# Arrays, hashes, strings are things that can be traversed through -- they all are Enumerables. All Enumerables have method 'each'
+[1,2,3].each {|a| puts a} #uses block of 'each' method
+{'a' => 1, 'b' => 2}.each {|key,val| puts key}
+
+# Say you want to modify data in a Enumerator
+
+[1,2,3].map {|a| 'a' * a} # => ["a", "aa", "aaa"] 
+
+# Or you want to filter some data out
+['one', 'two', 'three'].select {|a| a.match /o/} # => ["one", "two"]
+
+# Or you want to split data into 2 'buckets'
+['one', 'two', 'three'].partition {|a| a.match /o/} # => [["one", "two"], ["three"]]
+
+# Or you can do cumulative things: 
+[1, 2, 3].inject(0) {|res, n| res += n} # => 6
+[1, 2, 3].inject({}) {|res, n| res[n] = 'a' * n; res} # => {1=>"a", 2=>"aa", 3=>"aaa"}
+
 
 require 'blocks'
 
