@@ -25,27 +25,27 @@
 #   Objects have data and behavior. Object as a result have responsibility. Objects interact with each other 
 #   using messages. Objects have inheritance and polymorphism. For example imagine a lecturer tells his students
 #   to go to their next lecture:
-#   
-#                                        +-Person---------------+
-#                                        |                      |
-#                                        | def next_lecture()   |
-#                                        |   nil                |
-#                                        | end                  |
-#                                        |                      |
-#                                        +-----------+----------+
-#                                                    |
-#                                                    | 
-#            +---------------------------+-----------+------------+----------------------+
-#            |                           |                        |                      |
-#            |                           |                        |                      |
-#   +-Medical Student------+  +-Biology Student------+  +--Math Student------+ +-Janitor------+
-#   |                      |  |                      |  |                    | |              |
-#   | def next_lecture()   |  | def next_lecture()   |  | def next_lecture() | |              |
-#   |   next_medical_class |  |   next_biology_class |  |   next_math_class  | |              |
-#   | end                  |  | end                  |  | end                | |              |
-#   |                      |  |                      |  |                    | |              |
-#   +----------------------+  +----------------------+  +--------------------+ +--------------+
-#  
+# 
+#                              +-Person---------------+
+#                              |                      |
+#                              | def next_lecture()   |
+#                              |   nil                |
+#                              | end                  |
+#                              |                      |
+#                              +-----------+----------+
+#                                          |
+#                                          | 
+#          +--------------------------+-----------+-----------+-------------------+
+#          |                          |                       |                   |
+#          |                          |                       |                   |
+# +-Medical Student------+ +-Biology Student------+ +--Math Student------+ +-Janitor------+
+# |                      | |                      | |                    | |              |
+# | def next_lecture()   | | def next_lecture()   | | def next_lecture() | |              |
+# |   next_medical_class | |   next_biology_class | |   next_math_class  | |              |
+# | end                  | | end                  | | end                | |              |
+# |                      | |                      | |                    | |              |
+# +----------------------+ +----------------------+ +--------------------+ +--------------+
+#
 #   == Everything is an object in Ruby
 #     Objects, dots, and methods are the most ubiquitous elements of any ruby program
 #     even most operators (for example -, +, *) are actually methods of their objects
