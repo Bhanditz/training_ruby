@@ -5,7 +5,14 @@
 
 a = 5
 b = "Hello"
- 
+
+# What is the object's id?
+# +-------------+
+# | a.object_id |
+# +-------------+
+a.object_id
+b.object_id
+
 # Whats is your class?
 # +---------+
 # | a.class |
