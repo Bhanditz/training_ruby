@@ -45,6 +45,29 @@ end
 
 require 'blocks'
 
+#  == Reusing Blocks
+
+c = Proc.new {|i| "hello #{i}"}
+#Ruby 1.9 
+c = proc {|i| "hello #{i}"}
+
+
+a = [1,2,3,5,6]
+b = ['a','b','c','d']
+# a.map {|i| "hello #{i}"}
+# 
+# b.map {|i| "hello #{i}"}
+
+p a.map(&c)
+
+p b.map(&c)
+
+# Procs are blocks promoted to be objects
+
+c.call(1)
+c['World']
+
+
 # = Introduction to Monkey Patching
 # There is nothing sacred in Ruby...
 # Monkey patching is a common practice (somewhat dangerous)
