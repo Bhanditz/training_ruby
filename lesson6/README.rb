@@ -228,7 +228,7 @@ b = (a == 3) ? a : c
 # Operators can be dynamically overloaded (another example of Monkey patching)
 class Fixnum
   def +(a_num)
-    "#{self.to_s} + #{a_num}"
+    8
   end
 end
 
