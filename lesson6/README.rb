@@ -1,3 +1,4 @@
+# :vim set spell:
 # Structure of Ruby
 #
 #    1. Comments
@@ -13,7 +14,7 @@
 
 # Comments
 
-# No multiline comments escept
+# No multiline comments except
 =begin
   this is also a comment
   but it is multiline
@@ -51,9 +52,9 @@
 
 #
 
-# All datatypes are objects
+# All data types are objects
 
-# Numbers hiararchy is quite involved 
+# Numbers hierarchy is quite involved 
 # 
 #                            +-------+
 #                            |Numeric|
@@ -151,14 +152,85 @@ a = Array.new #same but much more wordy
 (2...10).to_a # => [2,3,4,5,6,7,8,9]
 'abcd'[0..2] # => 'abc'
 
-# Booleans
+# Flip-flops -- an interesting way to use ranges:
+[1,2,3,4,5,6,7,8,9,10,9,8,7,6,5,4,3,2,1].select {|i| i if i==3..i==5} # => [3,4,5,3,2,1]
+# flip flop starts from being false
+# it flips to true when left statement becomes true
+# it flips back to false when right statement evaluates to true
+# Useful to work with selecting specific parts of a text;
+# in this example start printing when meet TODO word in line and stop when meet empty line
+open('my_file').each { |line| print line if line ~= /TODO/..line =~ /^$/ }
 
+# Booleans
 true
 false
 #false is either false or nil
 
 # nil
-
 nil
 
+# There border between 'primitive' data types and other data types is fuzzy, usually you do have to load other data types to use them.
+
+require 'time'
+
+Time.now
+
+# There are two commands you can use -- require and load. Load happens every time it is called, require works only first time per file
+
+require 'time' # will do nothing second time
+
+load 'time'
+load 'time' # will work every time
+
+require 'set'
+
+a = [1,2,3,3,3,3,3,4,4,5,5].to_set
+
+
+
+# =Operators
+# Operators are syntactic tokens which represent an operation performed on one or more objects (operands). 
+# Line between operators and methods is VERY fuzzy.
+# You can look them up here
+# http://www.tutorialspoint.com/ruby/ruby_operators.htm
+
+# Most of operators are actually methods of basic data types
+# Cherry picking a few things to remember:
+
+# = assignment operator allows parallel assignments
+a, b, c = 1, 2, 3
+a, b = b, a # useful if you need to swap values of variables
+
+# &&, and, ||, or
+# &&, and are both operators for 
+
+# &&, || have higher precedence than  and, or
+# I prefer &&, || because of less surprises
+# Jeremy prefers and, or because of better readability
+
+# defined?
+# useful operator if you do not know if something is defined already
+
+# ||=
+a ||= b 
+#the same is 
+a = a || b # if a is false, then assign b to a
+
+# rescue
+
+a ||= some_method rescue c
+# if some_method throws an exception this expression  assigns c to a
+
+# ternary operator
+# ?:
+b = (a == 3) ? a : c
+
+# Operators can be dynamically overloaded (another example of Monkey patching)
+class Fixnum
+  def +(a_num)
+    "#{self.to_s} + #{a_num}"
+  end
+end
+
+puts 1 + 3
 
