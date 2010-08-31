@@ -25,6 +25,7 @@ for a in [1,2,3]
 end
 
 # Arrays, hashes, strings are things that can be traversed through -- they all are Enumerables. All Enumerables have method 'each'
+# It is important to know properties of Enumerables -- http://ruby-doc.org/core/classes/Enumerable.html
 [1,2,3].each {|a| puts a} #uses block of 'each' method
 {'a' => 1, 'b' => 2}.each {|key,val| puts key}
 

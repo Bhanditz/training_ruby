@@ -9,6 +9,7 @@
 #       something (there are no "void" methods).  For example,
 #       returns the value of the expression.
 #    5. Method chaining...  (come up with an example here - TODO)
+#    6. All values are objects and are accessed by reference
 
 
 # == Object Oriented approach to programming
@@ -116,3 +117,9 @@ end + ' time'
 # Simple expressions return themselves, for example expression 4 returns 4
 # Everything can be chain to everything, but if a method is missing chain would break
 
+
+# = All values are accessed by reference
+
+# So every time something is sent out to a method, it is sent by reference, not by value!
+# 
+# It does not really matter only for immutable objects, such as numbers and symbols
